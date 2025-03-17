@@ -18,4 +18,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('owners', OwnerController::class);
 Route::resource('brands', BrandController::class);
 Route::resource('modelis', ModelisController::class);
-Route::resource('cars', CarsController::class);
+Route::resource('cars' , CarsController::class);
