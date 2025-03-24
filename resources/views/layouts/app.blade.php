@@ -1,5 +1,16 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<header>
+    <nav>
+        <ul class="horizontal-menu">
+            <li><a href="/cars">Cars</a></li>
+            <li><a href="/owners">Owners</a></li>
+            <li><a href="/home">Home</a></li>
+        </ul>
+
+    </nav>
+</header>
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
