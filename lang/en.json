@@ -1,0 +1,17 @@
+{
+    "Welcome": "Welcome",
+    "Hello": "Hello",
+    "Goodbye": "Goodbye",
+    "Owners": "Owners",
+    "Cars": "Cars",
+    "Home": "Home",
+    "Name": "Name",
+    "Surname": "Surname",
+    "Email": "Email",
+    "Phone": "Phone",
+    "Address" : "Address",
+    "Add new owner": "Add new owner",
+    "Edit": "Edit",
+    "Delete": "Delete"
+
+}

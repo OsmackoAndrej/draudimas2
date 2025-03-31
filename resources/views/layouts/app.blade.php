@@ -1,15 +1,6 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<header>
-    <nav>
-        <ul class="horizontal-menu">
-            <li><a href="/cars">Cars</a></li>
-            <li><a href="/owners">Owners</a></li>
-            <li><a href="/home">Home</a></li>
-        </ul>
 
-    </nav>
-</header>
 
 <head>
     <meta charset="utf-8">
@@ -43,10 +34,27 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
 
+                        <li class="nav-item">
+                            <a class="nav-link"  href="{{ route('owners.index') }}">{{__('Owners')}}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('cars.index') }}">{{__('Cars')}}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link"  href="{{ route('home.index') }}">{{__('Home')}}</a>
+                        </li>
+
                     </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('setLanguage','lt') }}">LT</a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link pr-5" href="{{ route('setLanguage','en') }}">EN</a>
+                        </li>
+
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))
@@ -62,7 +70,7 @@
                             @endif
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
                                     {{ Auth::user()->name }}
                                 </a>
 

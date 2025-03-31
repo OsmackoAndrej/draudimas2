@@ -1,20 +1,24 @@
 <?php
 
-use App\Http\Controllers\OwnerController;
 use App\Http\Controllers\CarsController;
+use App\Http\Controllers\OwnerController;
+use App\Http\Controllers\HomeController;
 use App\Http\Middleware\Bug;
 use App\Http\Middleware\IsAdmin;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+
 
 Route::get('/', function () {
     return view('welcome');
 });
 
 Auth::routes();
+Route::get('/home', [HomeController::class, 'index']);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-
+Auth::routes();
+Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home.index');
 
 Route::resource('owners', OwnerController::class)->only('index');
 
@@ -24,3 +28,7 @@ Route::resource('owners', OwnerController::class)->only('destroy')->middleware(I
 
 
 Route::resource('cars' , CarsController::class);
+
+Route::get('setLanguage/{lang}', [LangController::class, 'switchLang'])->name('setLanguage');
+
+

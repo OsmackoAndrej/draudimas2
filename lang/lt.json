@@ -1,0 +1,17 @@
+{
+    "Welcome": "Sveiki",
+    "Hello": "Labas",
+    "Goodbye": "Viso",
+    "Owners": "Savininkas",
+    "Cars": "Automobilis",
+    "Home": "Pradžia",
+    "Name": "Vardas",
+    "Surname": "Pavarde",
+    "Email": "El. Paštas",
+    "Phone": "Telefonas",
+    "Address" : "Adresas",
+    "Add new owner": "Prideti nauja savininka",
+    "Edit": "Redaguoti",
+    "Delete": "Trinti"
+
+}

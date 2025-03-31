@@ -58,7 +58,8 @@ class CarsController extends Controller
      */
     public function update(Request $request, Car $car)
     {
-        $car = new Car();
+        //$car = new Car();
+        dd($car);
         $car->reg_number=$request->reg_number;
         $car->brand=$request->brand;
         $car->model=$request->model;

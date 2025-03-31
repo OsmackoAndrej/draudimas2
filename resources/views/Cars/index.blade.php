@@ -27,7 +27,7 @@
                             <td>{{$car->model}}</td>
                             <td>{{$car->owner_id}}</td>
                             <td>
-                                <a href="{{ route('cars.edit', $car->id) }}" class="btn btn-primary">Edit</a>
+                                <a href="{{ route('cars.edit', $car->id) }}" class="btn btn-primary">{{__('Edit')}}</a>
 
 
                             </td>
