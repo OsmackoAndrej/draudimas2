@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\CarsController;
-use App\Http\Controllers\OwnerController;
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Auth\CarsController;
+use App\Http\Controllers\Auth\HomeController;
+use App\Http\Controllers\Auth\LangController;
+use App\Http\Controllers\Auth\OwnerController;
 use App\Http\Middleware\Bug;
 use App\Http\Middleware\IsAdmin;
 use Illuminate\Support\Facades\Auth;
@@ -18,7 +19,7 @@ Route::get('/home', [HomeController::class, 'index']);
 
 
 Auth::routes();
-Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home.index');
+Route::get('/home', [\App\Http\Controllers\Auth\HomeController::class, 'index'])->name('home.index');
 
 Route::resource('owners', OwnerController::class)->only('index');
 
