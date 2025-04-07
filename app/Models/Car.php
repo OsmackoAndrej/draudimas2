@@ -11,4 +11,9 @@ class Car extends Model
         return $this->belongsTo(Owner::class);
 
     }
+    public function setRegNumber($value): void
+    {
+        $this->attributes['reg_number'] = strtoupper($value);
+    }
+
 }

@@ -27,7 +27,7 @@
                             <td>{{ $owner->phone }}</td>
                             <td>{{ $owner->address }}</td>
                             <td>
-                                @foreach($owner->cars as $car) <!-- Предполагается связь owner->cars -->
+                                @foreach($owner->cars as $car)
                                 <p>{{ $car->brand }} {{ $car->model }} ({{ $car->reg_number }})</p>
                                 @endforeach
                             </td>
@@ -38,7 +38,7 @@
                                 <form action="{{ route('owners.destroy', $owner->id) }}" method="post">
                                     @csrf
                                     @method("DELETE")
-                                    <button class="btn btn-danger">{{__('Delete')}}</button>
+                                    <button href="" class="btn btn-danger">{{__('Delete')}}</button>
                                 </form>
                             </td>
                         </tr>
