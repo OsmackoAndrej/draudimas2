@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Http\Requests\CarRequest;
 use App\Models\Car;
+use App\Models\CarPhoto;
 use Illuminate\Http\Request;
 
 class CarsController extends Controller
@@ -25,8 +27,9 @@ class CarsController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CarRequest $request)
     {
+        //$request->validate();
         $car = new Car();
         $car->reg_number=$request->reg_number;
         $car->brand=$request->brand;
@@ -56,10 +59,30 @@ class CarsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Car $car)
+    public function update(CarRequest $request, Car $car)
     {
-        //$car = new Car();
-        dd($car);
+       // dd($request->messages());
+
+        // dd($request->all()); // Посмотрим, что приходит в запросе
+        if ($request->hasFile('photo')) {
+            $request->validate([
+                'photo' => 'image|max:2048', // Проверяем, что это изображение и его размер
+            ]);
+
+            // Сохраняем файл в папку `storage/app/public/car_photos`
+            $path = $request->file('photo')->store('car_photos', 'public');
+
+            // Добавляем запись в таблицу `car_photos`
+            CarPhoto::create([
+                'car_id' => $car->id,
+                'photo' => $path,
+            ]);
+        }
+
+
+    //$car = new Car();
+        //dd($car);  dump and die. ostanovka.
+        //$request->validate();
         $car->reg_number=$request->reg_number;
         $car->brand=$request->brand;
         $car->model=$request->model;

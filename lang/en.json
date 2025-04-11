@@ -3,7 +3,10 @@
     "Hello": "Hello",
     "Goodbye": "Goodbye",
     "Owners": "Owners",
+    "Owner": "Owner",
     "Cars": "Cars",
+    "Registration number": "Registration number",
+    "Picture": "Picture",
     "Home": "Home",
     "Name": "Name",
     "Surname": "Surname",
@@ -12,6 +15,11 @@
     "Address" : "Address",
     "Add new owner": "Add new owner",
     "Edit": "Edit",
-    "Delete": "Delete"
+    "Delete": "Delete",
+    "Brand": "Brand",
+    "Model": "Model",
+    "Add new car": "Add new car",
+    "Update": "Update",
+    "Add": "Add"
 
 }

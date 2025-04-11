@@ -3,7 +3,11 @@
     "Hello": "Labas",
     "Goodbye": "Viso",
     "Owners": "Savininkas",
+    "Owner": "Savininkas",
     "Cars": "Automobilis",
+    "Car": "Automobilis",
+    "Registration number": "Registracijos numeris",
+    "Picture": "Nuotrauka",
     "Home": "Pradžia",
     "Name": "Vardas",
     "Surname": "Pavarde",
@@ -12,6 +16,11 @@
     "Address" : "Adresas",
     "Add new owner": "Prideti nauja savininka",
     "Edit": "Redaguoti",
-    "Delete": "Trinti"
+    "Delete": "Trinti",
+    "Brand": "Brendas",
+    "Model": "Modelis",
+    "Add new car": "Prideti nauja automobili",
+    "Update": "Atnaujinti",
+    "Add": "Prideti"
 
 }

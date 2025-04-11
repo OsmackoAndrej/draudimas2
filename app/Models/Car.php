@@ -15,5 +15,9 @@ class Car extends Model
     {
         $this->attributes['reg_number'] = strtoupper($value);
     }
+    public function photos()
+    {
+        return $this->hasMany(CarPhoto::class);
+    }
 
 }

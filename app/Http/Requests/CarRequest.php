@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use JetBrains\PhpStorm\ArrayShape;
 
 class CarRequest extends FormRequest
 {
@@ -29,7 +30,25 @@ class CarRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'reg_number' => 'required|string|regex:/^[A-Za-z]{3} [0-9]{3}$/'
+            'reg_number' => 'required|min:6|max:10',
+            'brand' => 'required|min:3|max:25',
+            'model' => 'required|min:3|max:25',
+            'owner_id' => 'required|numeric|between:1,7'
+        ];
+    }
+    public function messages(): array
+    {
+        return [
+            'reg_number.required' => 'Поле reg_number обязательно.',
+            'reg_number.min' => 'Минимальная длина reg_number — 3 символа.',
+            'reg_number.max' => 'Максимальная длина reg_number — 25 символов.',
+            'brand.required' => 'Поле brand обязательно.',
+            'brand.min' => 'Минимальная длина brand — 3 символа.',
+            'brand.max' => 'Максимальная длина brand — 25 символов.',
+            'model.required' => 'Поле model обязательно.',
+            'model.min' => 'Минимальная длина model — 3 символа.',
+            'model.max' => 'Максимальная длина model — 25 символов.',
         ];
     }
 }
+

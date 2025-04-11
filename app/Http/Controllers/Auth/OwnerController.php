@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Http\Requests\OwnerRequest;
 use App\Models\Owner;
 use Illuminate\Http\Request;
 
@@ -28,7 +29,7 @@ class OwnerController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(OwnerRequest $request)
     {
         $owner = new Owner();
         $owner->name=$request->name;
@@ -60,7 +61,7 @@ class OwnerController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Owner $owner)
+    public function update(OwnerRequest $request, Owner $owner)
     {
         $owner->name=$request->name;
         $owner->surname=$request->surname;

@@ -7,14 +7,15 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 mt-3">
-                <a href="{{ route("cars.create") }}" class="btn btn-success">Add new car</a>
+                <a href="{{ route("cars.create") }}" class="btn btn-success">{{__('Add new car')}}</a>
                 <table class="table">
                     <tbody>
                     <tr>
-                        <th>Registracijos numeris</th>
-                        <th>Brendas</th>
-                        <th>Modelis</th>
-                        <th>Savininkas</th>
+                        <th>{{__('Registration number')}}</th>
+                        <th>{{__('Brand')}}</th>
+                        <th>{{__('Model')}}</th>
+                        <th>{{__('Owner')}}</th>
+                        <th>{{__('Photo')}}</th>
                         <th></th>
                         <th></th>
                     </tr>
@@ -27,6 +28,18 @@
                             <td>{{$car->model}}</td>
                             <td>{{$car->owner_id}}</td>
                             <td>
+                                @if ($car->photos && count($car->photos) > 0)
+                                    @foreach ($car->photos as $photo)
+                                        <img src="{{ asset('storage/' . $photo->photo) }}" alt="Car Photo" width="100">
+
+                                    @endforeach
+                                @else
+                                    {{ __('No photos available') }}
+                                @endif
+
+                            </td>
+
+                            <td>
                                 <a href="{{ route('cars.edit', $car->id) }}" class="btn btn-primary">{{__('Edit')}}</a>
 
 
@@ -35,7 +48,7 @@
                                 <form action="{{ route('cars.destroy', $car->id) }}" method="post">
                                     @csrf
                                     @method("DELETE")
-                                    <button href="" class="btn btn-danger">Delete</button>
+                                    <button href="" class="btn btn-danger">{{__('Delete')}}</button>
                                 </form>
 
                             </td>

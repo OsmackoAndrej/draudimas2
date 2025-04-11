@@ -1,4 +1,4 @@
-brand<?php
+<?php
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -11,12 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('cars', function (Blueprint $table) {
+        Schema::create('car_photos', function (Blueprint $table) {
             $table->id();
-            $table->string('reg_number')->unique();
-            $table->string('brand');
-            $table->string('model');
-            $table->string('owner_id')->nullable();
+            $table->foreignId('car_id')->constrained()->onDelete('cascade');
+            $table->string('photo');
             $table->timestamps();
         });
     }
@@ -26,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('cars');
+        Schema::dropIfExists('car_photos');
     }
 };

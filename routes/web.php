@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\CarsController;
 use App\Http\Controllers\Auth\HomeController;
 use App\Http\Controllers\Auth\LangController;
 use App\Http\Controllers\Auth\OwnerController;
+use App\Http\Controllers\Auth\CarPhotoController;
 use App\Http\Middleware\Bug;
 use App\Http\Middleware\IsAdmin;
 use Illuminate\Support\Facades\Auth;
@@ -31,5 +32,7 @@ Route::resource('owners', OwnerController::class)->only('destroy')->middleware(I
 Route::resource('cars' , CarsController::class);
 
 Route::get('setLanguage/{lang}', [LangController::class, 'switchLang'])->name('setLanguage');
+Route::post('/cars/{car}/photos', [CarPhotoController::class, 'store'])->name('cars.photos.store');
+Route::get('/cars/{car}/photos', [CarPhotoController::class, 'index'])->name('cars.photos.index');
 
 
