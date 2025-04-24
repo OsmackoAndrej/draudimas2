@@ -37,17 +37,17 @@
                         <input type="text" class="form-control" @error('brand') is-invalid @enderror" name="brand" value="{{ old('brand')}}">
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">{{__('Modelis')}}:</label>
-                        <input type="text" class="form-control" name="model">
+                        <label class="form-label">{{__('Model')}}:</label>
+                        <input type="text" class="form-control"  @error('model') is-invalid @enderror" name="model">
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">{{__('Savininkas')}}:</label>
+                        <label class="form-label">{{__('Owner')}}:</label>
                         <input type="text" class="form-control" name="owner_id">
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label">{{__('Car Photo')}}:</label>
-                        <input type="file" class="form-control" name="photo" required>
+                        <input type="file" class="form-control"  name="photo">
                     </div>
 
                     <button type="submit" class="btn btn-success">{{__('Add')}}</button>

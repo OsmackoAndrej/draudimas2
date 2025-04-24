@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers;
 
 use App\Http\Requests\OwnerRequest;
 use App\Models\Owner;
-use Illuminate\Http\Request;
+use http\Env\Request;
+
 
 class OwnerController extends Controller
 {
@@ -31,6 +32,7 @@ class OwnerController extends Controller
      */
     public function store(OwnerRequest $request)
     {
+        //$request->validate();
         $owner = new Owner();
         $owner->name=$request->name;
         $owner->surname=$request->surname;
@@ -52,32 +54,46 @@ class OwnerController extends Controller
 
     /**
      * Show the form for editing the specified resource.
+     * @param Owner $owner
+     * @param $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Http\RedirectResponse|object
      */
-    public function edit(Owner $owner)
+    public function edit(Owner $owner, Request $request)
     {
+        if (! $request->user()->can('editStudent', $owner) ){
+            return redirect()->route('students.index');
+        }
         return view('owners.edit', ['owner' => $owner]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(OwnerRequest $request, Owner $owner)
+    public function update(Request $request, Owner $owner)
     {
-        $owner->name=$request->name;
-        $owner->surname=$request->surname;
-        $owner->email=$request->email;
-        $owner->phone=$request->phone;
-        $owner->address=$request->address;
-        $owner->save();
+        //$request->validate();
 
-        return redirect()->route('owners.index');
+        if (!$request->user()->can('editOwner', $owner)) {
+            return redirect()->route(route: 'owners.index');
+            $owner->name = $request->name;
+            $owner->surname = $request->surname;
+            $owner->email = $request->email;
+            $owner->phone = $request->phone;
+            $owner->address = $request->address;
+            $owner->save();
+
+            return redirect()->route('owners.index');
+        }
     }
-
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Owner $owner)
+    public function destroy(Owner $owner, Request $request)
     {
+
+        if (! $request->user()->can('deleteOwner', $owner) ){
+            return redirect()->route('owners.index');
+    }
         $owner->delete();
         return redirect()->route('owners.index');
     }

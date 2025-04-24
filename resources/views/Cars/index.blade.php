@@ -40,17 +40,20 @@
                             </td>
 
                             <td>
+                                @can('editCar', $car)
                                 <a href="{{ route('cars.edit', $car->id) }}" class="btn btn-primary">{{__('Edit')}}</a>
-
+                                @endcan
 
                             </td>
                             <td>
+                                @can('editCar', $car)
                                 <form action="{{ route('cars.destroy', $car->id) }}" method="post">
                                     @csrf
                                     @method("DELETE")
                                     <button href="" class="btn btn-danger">{{__('Delete')}}</button>
                                 </form>
 
+                                @endcan
                             </td>
                         </tr>
 

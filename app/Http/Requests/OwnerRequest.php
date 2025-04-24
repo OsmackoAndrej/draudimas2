@@ -11,7 +11,7 @@ class OwnerRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,11 +22,11 @@ class OwnerRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string|min:3,max:25',
-            'surname' => 'required|string|min:3,max:25',
-            'email' => 'required|email|unique:users,email',
-            'phone' => 'required|number|max:25',
-            'address' => 'required|string|min:3,max:25',
+            'name' => 'required|string|min:3|max:25',
+            'surname' => 'required|string|min:3|max:25',
+            'email' => 'required|email|unique:owner,email',
+            'phone' => 'required|numeric',
+            'address' => 'required|string|min:3|max:25',
         ];
     }
 

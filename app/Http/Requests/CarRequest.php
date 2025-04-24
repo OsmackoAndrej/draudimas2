@@ -33,7 +33,7 @@ class CarRequest extends FormRequest
             'reg_number' => 'required|min:6|max:10',
             'brand' => 'required|min:3|max:25',
             'model' => 'required|min:3|max:25',
-            'owner_id' => 'required|numeric|between:1,7'
+            'owner_id' => 'required|numeric'
         ];
     }
     public function messages(): array

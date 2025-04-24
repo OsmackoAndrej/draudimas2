@@ -32,7 +32,9 @@
                                 @endforeach
                             </td>
                             <td>
+                                @can('update',$owner)
                                 <a href="{{ route('owners.edit', $owner->id) }}" class="btn btn-primary">{{__('Edit')}}</a>
+                                    @endcan
                             </td>
                             <td>
                                 <form action="{{ route('owners.destroy', $owner->id) }}" method="post">

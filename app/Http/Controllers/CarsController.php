@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers;
 
 use App\Http\Requests\CarRequest;
 use App\Models\Car;
 use App\Models\CarPhoto;
-use Illuminate\Http\Request;
 
 class CarsController extends Controller
 {
@@ -29,7 +28,7 @@ class CarsController extends Controller
      */
     public function store(CarRequest $request)
     {
-        //$request->validate();
+       // $request->validate();
         $car = new Car();
         $car->reg_number=$request->reg_number;
         $car->brand=$request->brand;
@@ -82,7 +81,7 @@ class CarsController extends Controller
 
     //$car = new Car();
         //dd($car);  dump and die. ostanovka.
-        //$request->validate();
+       // $request->validate();
         $car->reg_number=$request->reg_number;
         $car->brand=$request->brand;
         $car->model=$request->model;

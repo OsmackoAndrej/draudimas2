@@ -1,10 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers;
 
 use App\models\car;
 use App\Models\CarPhoto;
-use Illuminate\Http\Request;
 use Illuminate\Http\Request;
 
 
