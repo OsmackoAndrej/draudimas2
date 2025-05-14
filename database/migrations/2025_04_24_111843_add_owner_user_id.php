@@ -1,28 +1,25 @@
 <?php
-
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
+    /** Run the migrations. */
     public function up(): void
     {
-        Schema::table("owners", function (Blueprint $table) {
-            $table->foreign('user_id')->references('id')->on('users');
+        Schema::table('owners', function (Blueprint $table) {
+            $table->unsignedBigInteger('user_id')->nullable()->after('id'); // Сначала создаём колонку
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade'); // Затем внешний ключ
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
+    /** Reverse the migrations. */
     public function down(): void
     {
-        Schema::table("owners", function (Blueprint $table) {
-            $table->dropColumn("user_id");
+        Schema::table('owners', function (Blueprint $table) {
+            $table->dropForeign(['user_id']); // Сначала удаляем внешний ключ
+            $table->dropColumn('user_id'); // Затем колонку
         });
     }
 };

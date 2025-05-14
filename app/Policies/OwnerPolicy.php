@@ -30,7 +30,7 @@ class OwnerPolicy
     public function create(User $user): bool
     {
 
-        if ($user->type=='admin'){
+        if ($user->type == 'admin') {
             return true;
         }
         return false;
@@ -41,7 +41,7 @@ class OwnerPolicy
      */
     public function update(User $user, Owner $owner): bool
     {
-        if ($user->type=='admin'){
+        if ($user->type == 'admin') {
             return true;
         }
         return false;
@@ -52,7 +52,7 @@ class OwnerPolicy
      */
     public function delete(User $user, Owner $owner): bool
     {
-        if ($user->type=='admin'){
+        if ($user->type == 'admin') {
             return true;
         }
         return false;
@@ -73,4 +73,14 @@ class OwnerPolicy
     {
         return false;
     }
+
+
+    public function edit(User $user, Owner $owner): bool
+    {
+        if ($user->type == 'admin') {
+            return true;
+        }
+        return false;
+    }
+
 }

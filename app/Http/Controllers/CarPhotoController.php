@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\models\car;
+use App\Models\Car;
 use App\Models\CarPhoto;
 use Illuminate\Http\Request;
 

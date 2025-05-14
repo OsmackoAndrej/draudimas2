@@ -26,7 +26,7 @@
                             <td>{{$car->reg_number}}</td>
                             <td>{{$car->brand}}</td>
                             <td>{{$car->model}}</td>
-                            <td>{{$car->owner_id}}</td>
+                            <td>{{ $car->owner_id }}</td>
                             <td>
                                 @if ($car->photos && count($car->photos) > 0)
                                     @foreach ($car->photos as $photo)
@@ -40,13 +40,13 @@
                             </td>
 
                             <td>
-                                @can('editCar', $car)
+                                @can('update', $car)
                                 <a href="{{ route('cars.edit', $car->id) }}" class="btn btn-primary">{{__('Edit')}}</a>
                                 @endcan
 
                             </td>
                             <td>
-                                @can('editCar', $car)
+                                @can('update', $car)
                                 <form action="{{ route('cars.destroy', $car->id) }}" method="post">
                                     @csrf
                                     @method("DELETE")

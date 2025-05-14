@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\OwnerRequest;
 use App\Models\Owner;
-use http\Env\Request;
+use Illuminate\Http\Request;
 
 
 class OwnerController extends Controller
@@ -15,6 +15,7 @@ class OwnerController extends Controller
     public function index()
     {
         $owners = Owner::all();
+
         return view('owners.index', ['owners' => $owners]);
     }
 
@@ -60,8 +61,8 @@ class OwnerController extends Controller
      */
     public function edit(Owner $owner, Request $request)
     {
-        if (! $request->user()->can('editStudent', $owner) ){
-            return redirect()->route('students.index');
+        if (! $request->user()->can('editOwner', $owner) ){
+            return redirect()->route('owners.index');
         }
         return view('owners.edit', ['owner' => $owner]);
     }
@@ -75,15 +76,14 @@ class OwnerController extends Controller
 
         if (!$request->user()->can('editOwner', $owner)) {
             return redirect()->route(route: 'owners.index');
-            $owner->name = $request->name;
-            $owner->surname = $request->surname;
-            $owner->email = $request->email;
-            $owner->phone = $request->phone;
-            $owner->address = $request->address;
-            $owner->save();
 
-            return redirect()->route('owners.index');
         }
+        $owner->name = $request->name;
+        $owner->surname = $request->surname;
+        $owner->email = $request->email;
+        $owner->phone = $request->phone;
+        $owner->address = $request->address;
+        $owner->save();
     }
     /**
      * Remove the specified resource from storage.

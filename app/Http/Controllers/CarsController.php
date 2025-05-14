@@ -10,8 +10,8 @@ class CarsController extends Controller
 {
     public function index()
     {
-        $cars = Car::all();
-        return view('cars.index', ['cars' => $cars]);
+        $cars = Car::with('owner')->get();
+        return view('cars.index', compact('cars'));
     }
 
     /**
@@ -26,14 +26,14 @@ class CarsController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(CarRequest $request)
+    public function store(Request $request)
     {
-       // $request->validate();
+        $request->validate();
         $car = new Car();
-        $car->reg_number=$request->reg_number;
-        $car->brand=$request->brand;
-        $car->model=$request->model;
-        $car->owner_id=$request->owner_id;
+        $car->reg_number = $request->reg_number;
+        $car->brand = $request->brand;
+        $car->model = $request->model;
+        $car->owner_id = $request->owner_id;
         $car->save();
 
         return redirect()->route('cars.index');

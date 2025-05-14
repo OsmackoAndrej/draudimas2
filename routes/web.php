@@ -10,31 +10,52 @@ use App\Http\Middleware\Bug;
 use App\Http\Middleware\IsAdmin;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\LoginController;
+
 
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('register');
+Route::post('register', [RegisterController::class, 'store']);
+//Auth::routes();
 Route::get('/home', [HomeController::class, 'index']);
-
-
-Auth::routes();
-Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home.index');
+Route::get('/home', [HomeController::class, 'index'])->name('home.index');
 
 Route::resource('owners', OwnerController::class)->only('index');
-
 Route::resource('owners', OwnerController::class)->except(['index','destroy'])->middleware(Bug::class);
+Route::resource('owners', OwnerController::class)->only(['update','edit','destroy'])->middleware(IsAdmin::class);
+//Auth::routes();
+//Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home.index');
 
-Route::resource('owners', OwnerController::class)->only('destroy')->middleware(IsAdmin::class);
+
 
 
 Route::resource('cars' , CarsController::class);
-
-Route::get('setLanguage/{lang}', [LangController::class, 'switchLang'])->name('setLanguage');
 Route::post('/cars/{car}/photos', [CarPhotoController::class, 'store'])->name('cars.photos.store');
 Route::get('/cars/{car}/photos', [CarPhotoController::class, 'index'])->name('cars.photos.index');
-Route::post('/register', [RegisterController::class, 'store'])->name('register');
+
+
+
+
+
+Route::get('setLanguage/{lang}', [LangController::class, 'switchLang'])->name('setLanguage');
+
+
+Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [LoginController::class, 'login']);
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+
+
+Route::get('/owners', [OwnerAPI::class, 'index']);
+Route::post('/owners', [OwnerAPI::class, 'store']);
+Route::get('/owners/{id}', [OwnerAPI::class, 'show']);
+Route::put('/owners/{id}', [OwnerAPI::class, 'update']);
+Route::delete('/owners/{id}', [OwnerAPI::class, 'destroy']);
 
 

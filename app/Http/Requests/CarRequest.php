@@ -18,7 +18,7 @@ class CarRequest extends FormRequest
     protected function prepareForValidation()
     {
         $this->merge([
-            'reg_number' => strtoupper($this->reg_number), // Преобразуем в верхний регистр
+            'reg_number' => strtoupper($this->reg_number),
         ]);
     }
 
@@ -33,7 +33,7 @@ class CarRequest extends FormRequest
             'reg_number' => 'required|min:6|max:10',
             'brand' => 'required|min:3|max:25',
             'model' => 'required|min:3|max:25',
-            'owner_id' => 'required|numeric'
+            'owner_id' => 'required|integer',
         ];
     }
     public function messages(): array

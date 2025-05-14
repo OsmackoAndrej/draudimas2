@@ -6,9 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Car extends Model
 {
+    protected $table = 'cars';
     public function owner()
     {
-        return $this->belongsTo(Owner::class);
+        return $this->belongsTo(Owner::class, 'owner_id');
 
     }
     public function setRegNumber($value): void
